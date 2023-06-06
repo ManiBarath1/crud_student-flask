@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{%block body%}
+
+<h1>Flask CRUD Operations</h1>
+<hr>
+<div style="justify-content: right; text-align: right;">
+<a href="{{url_for('add_user')}}" class="btn btn-success">Add User</a>
+</div>
+<table class="table table-border">
+    <th>Roll No</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Language</th>
+    <th>Preference</th>
+    <th></th>
+    <th></th>
+
+
+    {%for row in datas%}
+    <tr>
+        <td>{{loop.index}}</td>
+        <td>{{row.Name}}</td>
+        <td>{{row.Age}}</td>
+        <td>{{row.Language}}</td>
+        <td>{{row.preference}}</td>
+        <td><a href="{{url_for('edit_user',id=row.id)}}" class="btn btn-primary" >
+            Edit</a></td>
+        <td><a href="{{url_for('delete',id=row.id)}}" class="btn btn-danger" onclick="return confirm('Are you sure You want to delete?')">
+            Delete</a></td>
+   </tr>
+    {%endfor%}
+
+</table>
+{%endblock body%}
